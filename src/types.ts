@@ -1,2 +1,10 @@
+export type ExpenseCategory = "food" | "transport" | "shopping" | "bills" | "other";
+export type Expense = {
+    id: string;
+    description: string;
+    amount: number;
+    category: ExpenseCategory;
+    createdAt: string;
+};
 
-export {};
+export type ExpenseInput = Omit<Expense, "id" | "createdAt">;
