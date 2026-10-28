@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">₫</div>
+          <div>
+            <strong>Expense Tracker</strong>
+            <p>Mini Project</p>
+          </div>
+        </div>
+        <span class="project-tag">JavaScript → TypeScript</span>
+      </header>
+
+      <main class="main-layout">
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow">QUẢN LÝ CHI TIÊU</p>
+          <h1 id="page-title">Chi tiêu rõ ràng, <span>quản lý dễ dàng.</span></h1>
+          <p class="intro-copy">Ghi lại các khoản chi hằng ngày. Dữ liệu được lưu ngay trên trình duyệt của bạn.</p>
+        </section>
+
+        <section class="summary-grid" aria-label="Tổng quan chi tiêu">
+          <article class="summary-card primary-card">
+            <p class="summary-label">Tổng chi tiêu</p>
+            <p class="summary-value" id="total-amount">0 ₫</p>
+            <p class="summary-note">Tất cả khoản chi</p>
+          </article>
+          <article class="summary-card">
+            <p class="summary-label">Số giao dịch</p>
+            <p class="summary-value" id="expense-count">0</p>
+            <p class="summary-note">Giao dịch đã ghi nhận</p>
+          </article>
+          <article class="summary-card challenge-card">
+            <p class="summary-label">Tổng theo danh mục <span class="challenge-pill">Challenge</span></p>
+            <p class="summary-value challenge-value" id="category-total">—</p>
+          </article>
+        </section>
+
+        <div class="content-grid">
+          <section class="panel add-panel" aria-labelledby="add-title">
+            <div class="panel-heading">
+              <div>
+                <p class="panel-kicker">GHI NHẬN</p>
+                <h2 id="add-title">Thêm khoản chi</h2>
+              </div>
+              <div class="heading-symbol" aria-hidden="true">+</div>
+            </div>
+
+            <form id="expense-form" novalidate>
+              <div class="field">
+                <label for="description">Tên khoản chi</label>
+                <input id="description" name="description" type="text" maxlength="80" placeholder="Ví dụ: Ăn trưa" autocomplete="off" required />
+              </div>
+              <div class="field">
+                <label for="amount">Số tiền (VND)</label>
+                <input id="amount" name="amount" type="number" inputmode="numeric" min="1" step="1" placeholder="Ví dụ: 45000" required />
+              </div>
+              <div class="field">
+                <label for="category">Danh mục</label>
+                <select id="category" name="category" required>
+                  <option value="food">Ăn uống</option>
+                  <option value="transport">Di chuyển</option>
+                  <option value="shopping">Mua sắm</option>
+                  <option value="bills">Hóa đơn</option>
+                  <option value="other">Khác</option>
+                </select>
+              </div>
+              <p class="form-error" id="form-error" role="alert" aria-live="polite"></p>
+              <button class="primary-button" type="submit">+ Thêm khoản chi</button>
+            </form>
+          </section>
+
+          <section class="panel history-panel" aria-labelledby="history-title">
+            <div class="panel-heading history-header">
+              <div>
+                <p class="panel-kicker">LỊCH SỬ</p>
+                <h2 id="history-title">Các khoản chi</h2>
+              </div>
+              <div class="filter-field">
+                <label for="category-filter">Lọc danh mục <span class="challenge-dot" title="Bạn sẽ tự làm chức năng lọc"></span></label>
+                <select id="category-filter" name="category-filter">
+                  <option value="all">Tất cả danh mục</option>
+                  <option value="food">Ăn uống</option>
+                  <option value="transport">Di chuyển</option>
+                  <option value="shopping">Mua sắm</option>
+                  <option value="bills">Hóa đơn</option>
+                  <option value="other">Khác</option>
+                </select>
+              </div>
+            </div>
+            <p class="hint-text">Bộ lọc và tổng theo danh mục là phần <strong>challenge</strong>, chưa có logic trong JavaScript base.</p>
+            <ul class="expense-list" id="expense-list" aria-label="Danh sách khoản chi"></ul>
+            <div class="empty-state" id="empty-state">
+              <div class="empty-icon" aria-hidden="true">⌁</div>
+              <strong>Chưa có khoản chi nào</strong>
+              <p>Thử thêm giao dịch đầu tiên bằng biểu mẫu bên cạnh.</p>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
